@@ -1,17 +1,38 @@
 <template>
-  <nuxt-link :to="'/posts/' + 1" class="post-preview">
+  <nuxt-link :to="'/posts/' + id" class="post-preview">
     <article>
-      <div
-        class="post-thumbnail"
-        style="background-image: url('https://i.chzbgr.com/full/9340631040/h7DD2A60F/find-out-that-your-peeler-is-several-versions-behind-and-they-dropped-support-for-carrots-in-43')"
-      ></div>
+      <div class="post-thumbnail" :style="{backgroundImage: 'url(' + thumbNail + ')'}"></div>
       <div class="post-content">
-        <h1>Post Title 1</h1>
-        <p>Preview Text 1</p>
+        <h1>{{ title }}</h1>
+        <p>{{ previewText }}</p>
       </div>
     </article>
   </nuxt-link>
 </template>
+
+<script>
+export default {
+  name: 'PostPreview',
+  props: {
+    id: {
+      type: String,
+      required: true,
+    },
+    title: {
+      type: String,
+      required: true,
+    },
+    previewText: {
+      type: String,
+      required: true,
+    },
+    thumbNail: {
+      type: String,
+      required: true,
+    },
+  },
+}
+</script>
 
 <style scoped>
 .post-preview {
